@@ -1,13 +1,28 @@
 {
   "User": {
-    "name": { "string": {} }
+    "userName": { "regexp": "[A-Z][a-z]{5,10}" },
+    "firstName": { "regexp": "[A-Z][a-z]{5,10}" },
+    "lastName": { "regexp": "[A-Z][a-z]{5,10}" },
+    "email": { "regexp": "[a-z]{5,10}@[a-z]{5}\\.[a-z]{2,3}" } ,
+    "createdAt: {
+    "dateTime": {
+      "min": "2020-01-01T00:00:00Z",
+      "max": "2022-12-31T23:59:59Z"
+    }
+  }
   },
   "Post": {
-    "title": { "string": {} },
+    "title": { "loremSentences": { "minLength": 100, "maxLength": 200 } },
     "author": { "belongsTo": "User" },
     "comments": {
       "hasMany": "Comment"
+    },
+   "createdAt: {
+    "dateTime": {
+      "min": "2020-01-01T00:00:00Z",
+      "max": "2022-12-31T23:59:59Z"
     }
+  }
   },
   "Comment": {
     "text": { "string": {} },
@@ -15,5 +30,11 @@
       "belongsTo": "Post"
     },
     "author": { "belongsTo": "User" }
+  },
+ "createdAt: {
+    "dateTime": {
+      "min": "2020-01-01T00:00:00Z",
+      "max": "2022-12-31T23:59:59Z"
+    }
   }
 }
